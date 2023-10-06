@@ -1,6 +1,6 @@
 import json
-# Estudante: Fabricio Moreira Pedroso.
-# Curso : Análise e Desenvolvimento de Sistemas.
+# Author: Fabricio Moreira Pedroso
+# Analysis and Systems Development. ( First Semester of College )
 
 # Funções do Código
 
