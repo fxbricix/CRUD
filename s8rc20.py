@@ -1,6 +1,7 @@
 import json
 # Author: Fabricio Moreira Pedroso
-# Analysis and Systems Development. ( First Semester of College )
+# Analysis and Systems Development. ( First Semester of College ).
+# This code use Brazilian Portuguese.
 
 # Funções do Código
 
