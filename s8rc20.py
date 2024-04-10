@@ -23,78 +23,84 @@ def menu_op_matricula():
 
 # Menu de operações feito em formato de função.
 def proc_menu_op(opcao_operacoes, arquivo):
-    if opcao_operacoes == 1:  # Incluir
-        incluir(arquivo)
-    elif opcao_operacoes == 2:  # Listar
-        listar(arquivo)
-    elif opcao_operacoes == 3:  # Editar
-        codigo = int(input('Digite o código a ser EDITADO: '))
-        editar(codigo, arquivo)
-    elif opcao_operacoes == 4:  # Excluir
-        codigo = int(input('Digite o código a ser EXCLUIDO: '))
-        excluir(codigo, arquivo)
-    elif opcao_operacoes == 9:  # Voltar
-        print('\nVoltando ao menu principal!\n')
-        return False
-    else:
-        print('Opção Inválida, Tente Novamente.')
+    match opcao_operacoes:
+        case 1:
+            incluir(arquivo)
+        case 2:
+            listar(arquivo)
+        case 3:
+            codigo = int(input('Digite o código a ser EDITADO: '))
+            editar(codigo, arquivo)
+        case 4:
+            codigo = int(input('Digite o código a ser EXCLUIDO: '))
+            excluir(codigo, arquivo)
+        case 9:
+            print('\nVoltando ao menu principal!\n')
+            return False
+        case _:
+            print('Opção Inválida, Tente Novamente.')
 
     return True
 
 
 def proc_menu_disciplinas(opcao_operacoes, arquivo):
-    if opcao_operacoes == 1:  # Incluir
-        incluir_disciplina(arquivo)
-    elif opcao_operacoes == 2:  # Listar
-        listar_disciplina(arquivo)
-    elif opcao_operacoes == 3:  # Editar
-        codigo = int(input('Digite o código a ser EDITADO: '))
-        editar_disciplina(codigo, arquivo)
-    elif opcao_operacoes == 4:  # Excluir
-        codigo = int(input('Digite o código a ser EXCLUIDO: '))
-        excluir_disciplina(codigo, arquivo)
-    elif opcao_operacoes == 9:  # Voltar
-        print('\nVoltando ao menu principal!\n')
-        return False
-    else:
-        print('Opção Inválida, Tente Novamente.')
+    match opcao_operacoes:
+        case 1:
+            incluir_disciplina(arquivo)
+        case 2:  # Listar
+            listar_disciplina(arquivo)
+        case 3:  # Editar
+            codigo = int(input('Digite o código a ser EDITADO: '))
+            editar_disciplina(codigo, arquivo)
+        case 4:  # Excluir
+            codigo = int(input('Digite o código a ser EXCLUIDO: '))
+            excluir_disciplina(codigo, arquivo)
+        case 9:  # Voltar
+            print('\nVoltando ao menu principal!\n')
+            return False
+        case _:
+            print('Opção Inválida, Tente Novamente.')
 
     return True
 
 
 # Menu de operações feito em formato de função.
 def proc_menu_turmas(opcao_operacoes, arquivo):
-    if opcao_operacoes == 1:  # Incluir
-        incluir_turma(arquivo)
-    elif opcao_operacoes == 2:  # Listar
-        listar_turma(arquivo)
-    elif opcao_operacoes == 3:  # Editar
-        codigo = int(input('Digite o código a ser EDITADO: '))
-        editar_turma(codigo, arquivo)
-    elif opcao_operacoes == 4:  # Excluir
-        codigo = int(input('Digite o código a ser EXCLUIDO: '))
-        excluir_turma(codigo, arquivo)
-    elif opcao_operacoes == 9:  # Voltar
-        print('\nVoltando ao menu principal!\n')
-        return True
-    else:
-        print('Opção Inválida, Tente Novamente.')
+    match opcao_operacoes:
+        case 1:
+            incluir_turma(arquivo)
+        case 2:  # Listar
+            listar_turma(arquivo)
+        case 3:  # Editar
+            codigo = int(input('Digite o código a ser EDITADO: '))
+            editar_turma(codigo, arquivo)
+        case 4:  # Excluir
+            codigo = int(input('Digite o código a ser EXCLUIDO: '))
+            excluir_turma(codigo, arquivo)
+        case 9:  # Voltar
+            print('\nVoltando ao menu principal!\n')
+            return False
+        case _:
+            print('Opção Inválida, Tente Novamente.')
+
+    return True
 
 
 # Menu de operações feito em formato de função.
 def proc_menu_mat(opcao_operacoes, arquivo):
-    if opcao_operacoes == 1:  # Incluir
-        incluir_matricula(arquivo)
-    elif opcao_operacoes == 2:  # Listar
-        listar_matricula(arquivo)
-    elif opcao_operacoes == 3:  # Excluir
-        codigo = int(input('Digite a matricula a ser EXCLUIDA: '))
-        excluir_matricula(codigo, arquivo)
-    elif opcao_operacoes == 9:  # Voltar
-        print('\nVoltando ao menu principal!\n')
-        return False
-    else:
-        print('Opção Inválida, Tente Novamente.')
+    match opcao_operacoes:
+        case 1:  # Incluir
+            incluir_matricula(arquivo)
+        case 2:  # Listar
+            listar_matricula(arquivo)
+        case 3:  # Excluir
+            codigo = int(input('Digite a matricula a ser EXCLUIDA: '))
+            excluir_matricula(codigo, arquivo)
+        case 9:  # Voltar
+            print('\nVoltando ao menu principal!\n')
+            return False
+        case _:
+            print('Opção Inválida, Tente Novamente.')
 
     return True
 
@@ -210,17 +216,19 @@ def incluir_turma(arquivo):
     codigo_disciplina = int(input('Digite o código da disciplina: '))
     for item in lista:
         if item['CodigoTurma'] == codigo_turma:
-            print('\nCodigo da turma já utilizado!\nTente novamente com OUTRO CÓDIGO DE TURMA!\n')
+            print(
+                '\nCodigo da turma já utilizado!\nTente novamente com OUTRO CÓDIGO DE TURMA!\n')
             break
     else:
         dct = {
             'CodigoTurma': codigo_turma,
             'CodigoProfessor': codigo_professor,
             'CodigoDisciplina': codigo_disciplina
-            }
+        }
         lista.append(dct)
         salvar(lista, arquivo)
-        
+
+
 def listar_turma(arquivo):
     lista = ler(arquivo)
     if len(lista) == 0:
@@ -259,21 +267,24 @@ def excluir_turma(codigo, arquivo):
     input('\n Pressione ENTER para continuar')
 
 
-def incluir_matricula(arquivo):       # Diferença do outros código é que ele não via se havia a existencia de um código de turma existente ou de estudante!
-    listaTurma = ler(arquivo_turmas)  # Por conta disto enviei dois códigos, já que no PDF de TEMPLATE fiquei em dúvidas de como seria o resultado esperado!
-    codigo_turma = int(input('Digite o código da turma: ')) # Enviei as duas formas! Espero que não seja problemas Professor Galbas! Agradeço a Compreensão!
-    turma_existente =[registro['CodigoTurma'] for registro in listaTurma]
+# Diferença do outros código é que ele não via se havia a existencia de um código de turma existente ou de estudante!
+def incluir_matricula(arquivo):
+    # Por conta disto enviei dois códigos, já que no PDF de TEMPLATE fiquei em dúvidas de como seria o resultado esperado!
+    listaTurma = ler(arquivo_turmas)
+    # Enviei as duas formas! Espero que não seja problemas Professor Galbas! Agradeço a Compreensão!
+    codigo_turma = int(input('Digite o código da turma: '))
+    turma_existente = [registro['CodigoTurma'] for registro in listaTurma]
     if codigo_turma not in turma_existente:
         print('\nNão encotrei este código de turma. Verifique e tente novamente!')
         return
-    
+
     codigo_estudante = int(input('Digite o código do estudante: '))
     listaEstudante = ler(arquivo_estudantes)
     aluno_existente = [registro['Codigo'] for registro in listaEstudante]
     if codigo_estudante not in aluno_existente:
         print('\nNão encotrei este código de estudante. Verifique e tente novamente!')
         return
-    
+
     matricula = int(str(codigo_turma) + str(codigo_estudante))
     lista = ler(arquivo)
 
@@ -281,7 +292,7 @@ def incluir_matricula(arquivo):       # Diferença do outros código é que ele 
     if matricula in matriculas_existentes:
         print('\nCódigo de matricula repetido. Não é permitido.\n')
         return
-    
+
     dct = {
         'Matricula': matricula
     }
