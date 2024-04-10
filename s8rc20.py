@@ -1,9 +1,7 @@
 import json
 # Author: Fabricio Moreira Pedroso
 # Analysis and Systems Development. ( First Semester of College ).
-# This code use Brazilian Portuguese.
 
-# Funções do Código
 
 
 def menu_principal():  # Função do Menu Principal
@@ -266,12 +264,8 @@ def excluir_turma(codigo, arquivo):
 
     input('\n Pressione ENTER para continuar')
 
-
-# Diferença do outros código é que ele não via se havia a existencia de um código de turma existente ou de estudante!
 def incluir_matricula(arquivo):
-    # Por conta disto enviei dois códigos, já que no PDF de TEMPLATE fiquei em dúvidas de como seria o resultado esperado!
     listaTurma = ler(arquivo_turmas)
-    # Enviei as duas formas! Espero que não seja problemas Professor Galbas! Agradeço a Compreensão!
     codigo_turma = int(input('Digite o código da turma: '))
     turma_existente = [registro['CodigoTurma'] for registro in listaTurma]
     if codigo_turma not in turma_existente:
@@ -343,49 +337,50 @@ def ler(arquivo):   # Lê o arquivo salvo, se não existir retorna lista vazia.
         return []
 
 
-arquivo_estudantes = 'estudantes.json'  # Variável do arquivo de estudantes.
-arquivo_professores = 'professores.json'  # Varíavel do arquivo professores.
-arquivo_disciplinas = 'disciplinas.json'  # Varíavel do arquivo disciplina.
-arquivo_turmas = 'turmas.json'  # Varíavel do arquivo turmas.
-arquivo_matriculas = 'matricula.json'  # Varíavel do arquivo matriculas.
+arquivo_estudantes = 'estudantes.json' 
+arquivo_professores = 'professores.json' 
+arquivo_disciplinas = 'disciplinas.json'  
+arquivo_turmas = 'turmas.json'  
+arquivo_matriculas = 'matricula.json'  
 
 while True:  # Loop menu principal
     try:
         opcao_menu_principal = menu_principal()
-        if opcao_menu_principal == 1:  # Menu ESTUDANTES OK
-            print('\nVocê escolheu o menu de ESTUDANTES.\n')
-            while True:
-                opcao_operacoes = menu_operacoes()
-                if not proc_menu_op(opcao_operacoes, arquivo_estudantes):
-                    break
-        elif opcao_menu_principal == 2:  # Menu Professores OK
-            print('\nVocê escolheu o menu de PROFESSORES.\n')
-            while True:
-                opcao_operacoes = menu_operacoes()
-                if not proc_menu_op(opcao_operacoes, arquivo_professores):
-                    break
-        elif opcao_menu_principal == 3:  # Menu Disciplinas OK
-            print('\nVocê escolheu o menu de DISCIPLINAS.\n')
-            while True:
-                opcao_operacoes = menu_operacoes()
-                if not proc_menu_disciplinas(opcao_operacoes, arquivo_disciplinas):
-                    break
-        elif opcao_menu_principal == 4:  # Menu Turmas OK
-            print('Você escolheu o menu TURMAS')
-            while True:
-                opcao_operacoes = menu_operacoes()
-                if proc_menu_turmas(opcao_operacoes, arquivo_turmas):
-                    break
-        elif opcao_menu_principal == 5:  # Menu Matriculas OK
-            while True:
-                opcao_operacoes = menu_op_matricula()
-                if not proc_menu_mat(opcao_operacoes, arquivo_matriculas):
-                    break
-        elif opcao_menu_principal == 0:
-            print('\nVocê escolheu sair!')
-            break
-        else:
-            print('\nOpção Inválida!\n')
-            input('Pressione ENTER para continuar.')
+        match opcao_menu_principal:
+            case 1:
+                print('\nVocê escolheu o menu de ESTUDANTES.\n')
+                while True:
+                    opcao_operacoes = menu_operacoes()
+                    if not proc_menu_op(opcao_operacoes, arquivo_estudantes):
+                        break
+            case 2:
+                print('\nVocê escolheu o menu de PROFESSORES.\n')
+                while True:
+                    opcao_operacoes = menu_operacoes()
+                    if not proc_menu_op(opcao_operacoes, arquivo_professores):
+                        break
+            case 3:
+                print('\nVocê escolheu o menu de DISCIPLINAS.\n')
+                while True:
+                    opcao_operacoes = menu_operacoes()
+                    if not proc_menu_disciplinas(opcao_operacoes, arquivo_disciplinas):
+                        break
+            case 4:
+                print('Você escolheu o menu TURMAS')
+                while True:
+                    opcao_operacoes = menu_operacoes()
+                    if proc_menu_turmas(opcao_operacoes, arquivo_turmas):
+                        break
+            case 5:
+                while True:
+                    opcao_operacoes = menu_op_matricula()
+                    if not proc_menu_mat(opcao_operacoes, arquivo_matriculas):
+                        break
+            case 0:
+                print('\nVocê escolheu sair!')
+                break
+            case _:
+                print('\nOpção Inválida!\n')
+                input('Pressione ENTER para continuar.')
     except ValueError:  # Caso receba um valor fora do que a variavel recebe, aparecerá mensagem de erro
         print('\nOpção Inválida!\n')
