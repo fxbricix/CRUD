@@ -2,6 +2,8 @@ import json
 
 
 # Andre Conflitou AQUI
+# Exemplo de branch
+
 
 def menu_principal():  # Função do Menu Principal
     print('----  MENU PRINCIPAL  ----\n[1] - Gerenciar Estudantes.\n[2] - Gerenciar Professores.\n[3] - Gerenciar Disciplinas.\n[4] - Gerenciar Turmas.\n[5] - Gerenciar Matrículas\n[0] - Sair\n--------------------------\n')
