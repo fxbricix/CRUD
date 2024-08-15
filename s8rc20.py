@@ -1,7 +1,7 @@
 import json
 
 
-
+# Andre Conflitou AQUI
 
 def menu_principal():  # Função do Menu Principal
     print('----  MENU PRINCIPAL  ----\n[1] - Gerenciar Estudantes.\n[2] - Gerenciar Professores.\n[3] - Gerenciar Disciplinas.\n[4] - Gerenciar Turmas.\n[5] - Gerenciar Matrículas\n[0] - Sair\n--------------------------\n')
@@ -263,6 +263,7 @@ def excluir_turma(codigo, arquivo):
 
     input('\n Pressione ENTER para continuar')
 
+
 def incluir_matricula(arquivo):
     listaTurma = ler(arquivo_turmas)
     codigo_turma = int(input('Digite o código da turma: '))
@@ -336,11 +337,11 @@ def ler(arquivo):   # Lê o arquivo salvo, se não existir retorna lista vazia.
         return []
 
 
-arquivo_estudantes = 'estudantes.json' 
-arquivo_professores = 'professores.json' 
-arquivo_disciplinas = 'disciplinas.json'  
-arquivo_turmas = 'turmas.json'  
-arquivo_matriculas = 'matricula.json'  
+arquivo_estudantes = 'estudantes.json'
+arquivo_professores = 'professores.json'
+arquivo_disciplinas = 'disciplinas.json'
+arquivo_turmas = 'turmas.json'
+arquivo_matriculas = 'matricula.json'
 
 while True:  # Loop menu principal
     try:
