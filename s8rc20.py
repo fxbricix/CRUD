@@ -1,6 +1,5 @@
 import json
-# Author: Fabricio Moreira Pedroso
-# Analysis and Systems Development. ( First Semester of College ).
+
 
 # Exemplo de branch
 
